@@ -1,0 +1,76 @@
+name: Dump
+
+on:
+  push:
+    paths-ignore:
+      - '*.md'
+    branches: [ main ]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkouts
+         uses: actions/checkout@v2
+
+       - name: Clone Dumpyara
+         run: |
+              if [ -f "private.txt" ]
+              then
+                  git clone --depth=1 --single-branch https://github.com/Box-boi/phoenix_firmware_dumper.git -b private
+              else
+                  git clone --depth=1 --single-branch https://github.com/Box-boi/phoenix_firmware_dumper.git
+              fi
+              
+              
+       - name: Setup Dumpyara environment
+         working-directory: phoenix_firmware_dumper
+         run: |
+              sudo bash setup.sh
+
+       - name: Setup config envs And Begin Dump
+         working-directory: phoenix_firmware_dumper
+         run: |
+              NAME_OF_THIS_REPO="dumper"
+              GITHUB_ORG_NAME="boxaltdump"
+              GITLAB_ORG_NAME="boxdumps"
+              GITLAB_USERNAME="boxaltdumps"
+              GITHUB_USERNAME="box-automation1"
+              GIT_CONFIG_USERNAME="Box In A Box"
+              GIT_CONFIG_EMAIL="evanferrao@gmail.com"
+              GIT_GITHUB_TOKEN="${{ secrets.GIT_GITHUB_TOKEN }}"
+              GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}"
+              TG_BOT_TOKEN="${{ secrets.TG_BOT_TOKEN }}"
+              TG_CHAT="@BoxDumps"
+              CHAT_REQUEST_ID="@BoxDumpRequests"  # Your Dump Request Group
+              GITLAB_HOSTNAME="gitgud.io" ## use 'gitlab.com' by default, or use your own gitlab instance, or any public one
+              echo "$GITHUB_ORG_NAME" > .github_orgname
+              echo "$GITLAB_HOSTNAME" > .gitlab_instance
+              echo "$GIT_GITHUB_TOKEN" > .github_token
+              echo "$GITLAB_ORG_NAME" > .gitlab_orgname
+              echo "$GITLAB_USERNAME" > .gitlab_username
+              echo "$GITHUB_USERNAME" > .github_username
+              echo "$GITLAB_TOKEN" > .gitlab_token
+              echo "$CHAT_REQUEST_ID" > .tg_request_chat
+              echo "$TG_BOT_TOKEN" > .tg_token
+              echo "$TG_CHAT" > .tg_chat
+              aria2c -o .tg_chat_id https://raw.githubusercontent.com/${GITHUB_USERNAME}/${NAME_OF_THIS_REPO}/main/CHAT_ID.txt
+              aria2c -o .user_first_name https://raw.githubusercontent.com/${GITHUB_USERNAME}/${NAME_OF_THIS_REPO}/main/USER_FIRST_NAME.txt
+              aria2c -o .user_id https://raw.githubusercontent.com/${GITHUB_USERNAME}/${NAME_OF_THIS_REPO}/main/USER_ID.txt
+              aria2c -o .user_tag https://raw.githubusercontent.com/${GITHUB_USERNAME}/${NAME_OF_THIS_REPO}/main/USER_TAG.txt
+              #Do Not Edit This
+              git config --global user.name "$GIT_CONFIG_USERNAME"
+              git config --global user.email "$GIT_CONFIG_EMAIL"
+              sed -i s/"DroidDumps@github.com"/"$GIT_CONFIG_EMAIL"/g dumper.sh
+              sed -i s/"user.name \"DroidDumps\""/"user.name \"$GIT_CONFIG_USERNAME\""/g dumper.sh
+              #Send Telegram Conformation  #Sends A 'Starting Dump...' Message, and saves the message id to a file, so that, message can be edited live later on
+              echo ""$(curl -X POST -H 'Content-Type: application/json' -d "{\"chat_id\": \"$(< .tg_chat_id)\", \"text\": \"Starting Dump...\", \"disable_notification\": true}" https://api.telegram.org/bot$TG_BOT_TOKEN/sendMessage | grep -oP "(\"message_id\":)[0-9]+" | cut -d ":" -f 2)"" > .message_id
+              sudo bash dumper.sh "$ROM_URL"
+
+env:
+  ROM_URL: http://boxmirrorbomt.boxmirrorbomt1.workers.dev/0:/MirrorBomt2/F5122_34.4.A.2.118_R2E_CIS%20RU-UA-KZ-BY_1302-3409.ftf
