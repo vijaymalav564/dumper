@@ -64,4 +64,4 @@ jobs:
               sudo bash dumper.sh "$ROM_URL"
 
 env:
-  ROM_URL: https://spring-frog-634c.vijaymalav6969.workers.dev/0:/RMX1941/FusionOS-3.0-Aqua-RMX1941-12160100-UNOFFICIAL.zip
+  ROM_URL: https://download.c.realme.com/osupdate/RMX1801EX_11_OTA_2120_all_4q5L63MjpxAp.ozip
