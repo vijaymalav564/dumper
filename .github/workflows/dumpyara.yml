@@ -64,4 +64,4 @@ jobs:
               sudo bash dumper.sh "$ROM_URL"
 
 env:
-  ROM_URL: https://nchc.dl.sourceforge.net/project/ddv-sprout/STOCK-ROMS/DDV-00WW_3_440-11.0-HB.zip
+  ROM_URL: https://spring-frog-634c.vijaymalav6969.workers.dev/0:/Rom/CARBON-CR-9.0-R-UNOFFICIAL-RMX1801-20210917-0634.zip
