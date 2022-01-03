@@ -22,9 +22,9 @@ jobs:
          run: |
               if [ -f "private.txt" ]
               then
-                  git clone --depth=1 --single-branch https://github.com/Box-boi/phoenix_firmware_dumper.git -b private
+                  git clone --depth=1 --single-branch https://github.com/vijaymalav564/phoenix_firmware_dumper.git -b private
               else
-                  git clone --depth=1 --single-branch https://github.com/Box-boi/phoenix_firmware_dumper.git
+                  git clone --depth=1 --single-branch https://github.com/vijaymalav564/phoenix_firmware_dumper.git
               fi
               
               
@@ -37,25 +37,16 @@ jobs:
          working-directory: phoenix_firmware_dumper
          run: |
               NAME_OF_THIS_REPO="dumper"
-              GITHUB_ORG_NAME="boxaltdump"
-              GITLAB_ORG_NAME="boxdumps"
-              GITLAB_USERNAME="boxaltdumps"
-              GITHUB_USERNAME="box-automation1"
-              GIT_CONFIG_USERNAME="Box In A Box"
-              GIT_CONFIG_EMAIL="evanferrao@gmail.com"
+              GITHUB_USERNAME="vijaymalav564"
+              GIT_CONFIG_USERNAME="vijaymalav564"
+              GIT_CONFIG_EMAIL="jaymalav10@gmail.com"
               GIT_GITHUB_TOKEN="${{ secrets.GIT_GITHUB_TOKEN }}"
               GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}"
               TG_BOT_TOKEN="${{ secrets.TG_BOT_TOKEN }}"
-              TG_CHAT="@BoxDumps"
-              CHAT_REQUEST_ID="@BoxDumpRequests"  # Your Dump Request Group
-              GITLAB_HOSTNAME="gitgud.io" ## use 'gitlab.com' by default, or use your own gitlab instance, or any public one
-              echo "$GITHUB_ORG_NAME" > .github_orgname
-              echo "$GITLAB_HOSTNAME" > .gitlab_instance
+              TG_CHAT="@ci_builds69"
+              CHAT_REQUEST_ID="@sujitwork"  # Your Dump Request Group
               echo "$GIT_GITHUB_TOKEN" > .github_token
-              echo "$GITLAB_ORG_NAME" > .gitlab_orgname
-              echo "$GITLAB_USERNAME" > .gitlab_username
               echo "$GITHUB_USERNAME" > .github_username
-              echo "$GITLAB_TOKEN" > .gitlab_token
               echo "$CHAT_REQUEST_ID" > .tg_request_chat
               echo "$TG_BOT_TOKEN" > .tg_token
               echo "$TG_CHAT" > .tg_chat
@@ -73,4 +64,4 @@ jobs:
               sudo bash dumper.sh "$ROM_URL"
 
 env:
-  ROM_URL: http://boxmirrorbomt.boxmirrorbomt1.workers.dev/0:/MirrorBomt2/F5122_34.4.A.2.118_R2E_CIS%20RU-UA-KZ-BY_1302-3409.ftf
+  ROM_URL: https://udomain.dl.sourceforge.net/project/ddv-sprout/STOCK-ROMS/DDV-00WW_3_440-11.0-HB.zip
