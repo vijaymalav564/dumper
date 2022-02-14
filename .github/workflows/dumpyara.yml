@@ -64,4 +64,4 @@ jobs:
               sudo bash dumper.sh "$ROM_URL"
 
 env:
-  ROM_URL: https://spring-frog-634c.vijaymalav6969.workers.dev/0:/RMX1941/FusionOS-3.0-Aqua-RMX1941-12160100-UNOFFICIAL.zip
+  ROM_URL: https://mirrors.vijaymalav6969.workers.dev/0:/RMX1801/A12/crDroidAndroid-12.0-20220213-RMX1801-v8.2.zip
