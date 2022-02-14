@@ -41,9 +41,8 @@ jobs:
               GIT_CONFIG_USERNAME="vijaymalav564"
               GIT_CONFIG_EMAIL="jaymalav10@gmail.com"
               GIT_GITHUB_TOKEN="${{ secrets.GIT_GITHUB_TOKEN }}"
-              GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}"
               TG_BOT_TOKEN="${{ secrets.TG_BOT_TOKEN }}"
-              TG_CHAT="@ci_builds69"
+              TG_CHAT="@fenrir_ci_builds"
               CHAT_REQUEST_ID="@sujitwork"  # Your Dump Request Group
               echo "$GIT_GITHUB_TOKEN" > .github_token
               echo "$GITHUB_USERNAME" > .github_username
