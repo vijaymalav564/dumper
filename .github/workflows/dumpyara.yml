@@ -63,4 +63,4 @@ jobs:
               sudo bash dumper.sh "$ROM_URL"
 
 env:
-  ROM_URL: https://mirrors.vijaymalav6969.workers.dev/0:/RMX1801/A12/crDroidAndroid-12.0-20220213-RMX1801-v8.2.zip
+  ROM_URL: https://mirrors.vijaymalav6969.workers.dev/0:/Tg/UL-K012_2-TR-12.8.1.38-user.zip
