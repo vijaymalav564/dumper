@@ -63,4 +63,4 @@ jobs:
               sudo bash dumper.sh "$ROM_URL"
 
 env:
-  ROM_URL: https://mirrors.vijaymalav6969.workers.dev/0:/new/DerpFest-12-Community-Shinju-RMX1801-20220619-1443.zip
+  ROM_URL: https://mirrors.vijaymalav6969.workers.dev/0:/RMX1801/Aicp/aicp_RMX1801_s-17.1-UNOFFICIAL-20220612.zip
