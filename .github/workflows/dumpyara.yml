@@ -63,4 +63,4 @@ jobs:
               sudo bash dumper.sh "$ROM_URL"
 
 env:
-  ROM_URL: https://mirrors.vijaymalav6969.workers.dev/0:/RMX1801/Aicp/aicp_RMX1801_s-17.1-UNOFFICIAL-20220612.zip
+  ROM_URL: https://5kqdt0-my.sharepoint.com/personal/vijaymalav839_5kqdt0_onmicrosoft_com/_layouts/15/download.aspx?share=EUTP_nUSueZMh9lO609KJkQBN-gUTtyRnwN5UbjHgcgt4g
